@@ -19,8 +19,6 @@ class TestTriangles(unittest.TestCase):
 
     def test_RightTriangleA(self): 
         self.assertEqual(classifyTriangle(3,4,5),'Right')
-
-    def test_RightTriangleB(self): 
         self.assertEqual(classifyTriangle(5,3,4),'Right')
         
     def test_EquilateralTriangles(self): 
