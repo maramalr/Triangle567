@@ -17,16 +17,41 @@ from Triangle import classifyTriangle
 class TestTriangles(unittest.TestCase):
     # define multiple sets of tests as functions with names that begin
 
-    def testRightTriangleA(self): 
-        self.assertEqual(classifyTriangle(3,4,5),'Right','3,4,5 is a Right triangle')
+    def test_RightTriangleA(self): 
+        self.assertEqual(classifyTriangle(3,4,5),'Right')
 
-    def testRightTriangleB(self): 
-        self.assertEqual(classifyTriangle(5,3,4),'Right','5,3,4 is a Right triangle')
+    def test_RightTriangleB(self): 
+        self.assertEqual(classifyTriangle(5,3,4),'Right')
         
-    def testEquilateralTriangles(self): 
-        self.assertEqual(classifyTriangle(1,1,1),'Equilateral','1,1,1 should be equilateral')
+    def test_EquilateralTriangles(self): 
+        self.assertEqual(classifyTriangle(1,1,1),'Equilateral')
+
+    def test_IsocelesTriangles(self): 
+        self.assertEqual(classifyTriangle(3,3,1),'Isoceles')
+        self.assertEqual(classifyTriangle(1,3,1),'Isoceles')
+        self.assertEqual(classifyTriangle(3,1,1),'Isoceles')
+
+    def test_ScaleneTriangles(self): 
+        self.assertEqual(classifyTriangle(1,3,2),'Scalene')
+
+    def test_NotvalidTriangles(self):
+        self.assertEqual(classifyTriangle(5,8,3), 'NotATriangle')
+
+    def test_InvalidInput(self):
+        self.assertEqual(classifyTriangle(0,1,2), 'InvalidInput')
+        self.assertEqual(classifyTriangle(1,0,2), 'InvalidInput')
+        self.assertEqual(classifyTriangle(2,1,0), 'InvalidInput')
+        self.assertEqual(classifyTriangle(-3,1,2), 'InvalidInput')
+        self.assertEqual(classifyTriangle(1,-3,2), 'InvalidInput')
+        self.assertEqual(classifyTriangle(2,1,-3), 'InvalidInput')
+        self.assertEqual(classifyTriangle(300,150,200), 'InvalidInput')
+        self.assertEqual(classifyTriangle(90,201,100), 'InvalidInput')
+        self.assertEqual(classifyTriangle(59,90,203), 'InvalidInput')
+        self.assertEqual(classifyTriangle(1,0.1,2), 'InvalidInput')
+        self.assertEqual(classifyTriangle('A',1,2), 'InvalidInput')
+
 
 if __name__ == '__main__':
     print('Running unit tests')
-    unittest.main()
+    unittest.main(exit=False, verbosity=2)
 
